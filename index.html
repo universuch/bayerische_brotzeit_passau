@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bayerische Brotzeit – Vorbestellung</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f3ed;
+      color: #333;
+    }
+    header {
+      background: #0e4b84;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #0e4b84;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    select, input[type="text"], input[type="email"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 0.75rem;
+      background: #0e4b84;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #confirmation {
+      display: none;
+      padding: 2rem;
+      background: #e6f4ea;
+      border: 1px solid #a8d5b8;
+      border-radius: 10px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bayerische Brotzeit</h1>
+    <p>Jetzt vorbestellen und frisch genießen!</p>
+  </header>
+  <div class="content">
+    <img src="brezelpizza_plakat.png" alt="Brezelpizza Plakat">
+    <h2>Unsere Brezelpizza</h2>
+    <p>Die Bayerische Brezelpizza kombiniert ofenfrische Laugenkruste mit klassischen Pizzabelägen – wahlweise mit würziger Wurst oder vegetarisch mit Tomate & Lauch.</p>
+    <p><strong>Preis:</strong> 8,00 € (Fleisch) / 7,50 € (Vegetarisch)</p>
+
+    <h2>Vorbestellen & Abholen</h2>
+    <form onsubmit="handleSubmit(event)">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">E-Mail-Adresse:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="telefon">Telefonnummer (optional):</label>
+      <input type="text" id="telefon" name="telefon" placeholder="z. B. 0151 12345678">
+
+      <label for="variante">Variante wählen:</label>
+      <select id="variante" name="variante" required>
+        <option value="fleisch">Brezelpizza mit Fleisch – 8,00 €</option>
+        <option value="veggie">Brezelpizza vegetarisch – 7,50 €</option>
+      </select>
+
+      <label for="zeit">Gewünschte Abholzeit:</label>
+      <input type="text" id="zeit" name="zeit" placeholder="z. B. 12:30 Uhr" required>
+
+      <button type="submit">Jetzt vorbestellen</button>
+    </form>
+
+    <div id="confirmation">
+      <h2>Danke für deine Vorbestellung, <span id="confirmName"></span>!</h2>
+      <p>Deine Brezelpizza liegt zur Abholung um <strong><span id="confirmZeit"></span></strong> bereit.</p>
+      <p>Wir freuen uns auf deinen Besuch!</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Bayerische Brotzeit – Frisch aus deiner Bedientheke im Markt.
+  </footer>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const zeit = document.getElementById("zeit").value;
+
+      document.querySelector("form").style.display = "none";
+      document.getElementById("confirmName").textContent = name;
+      document.getElementById("confirmZeit").textContent = zeit;
+      document.getElementById("confirmation").style.display = "block";
+    }
+  </script>
+</body>
+</html>
