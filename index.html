@@ -129,6 +129,13 @@
       const name = document.getElementById("name").value;
       const zeit = document.getElementById("zeit").value;
 
+      // Validierung: mindestens eine Ziffer im Zeitfeld
+      const zeitValid = /\d/.test(zeit);
+      if (!zeitValid) {
+        alert("Bitte gib eine gültige Abholzeit an, die eine Uhrzeit enthält (z. B. 12:30 Uhr).");
+        return;
+      }
+
       document.querySelector("form").style.display = "none";
       document.getElementById("confirmName").textContent = name;
       document.getElementById("confirmZeit").textContent = zeit;
